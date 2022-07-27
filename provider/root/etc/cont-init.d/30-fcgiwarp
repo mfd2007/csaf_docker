@@ -1,0 +1,3 @@
+#!/usr/bin/with-contenv bash
+
+spawn-fcgi -s /var/run/fcgiwrap.socket -M 766 /usr/bin/fcgiwrap 
