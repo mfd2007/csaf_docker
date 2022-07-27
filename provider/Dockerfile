@@ -9,4 +9,4 @@ ENV PATH="/usr/local/go/bin:${PATH}"
 RUN apk add --no-cache spawn-fcgi fcgiwrap
 COPY root/ /
 
-EXPOSE 443
+EXPOSE 80 443
