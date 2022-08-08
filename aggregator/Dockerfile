@@ -8,6 +8,7 @@ COPY root/docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
 
 RUN addgroup -S user -g 1000 && adduser -S user -G user -u 1000
-USER user
+#USER user
 
+WORKDIR /
 ENTRYPOINT ["/docker-entrypoint.sh"]
