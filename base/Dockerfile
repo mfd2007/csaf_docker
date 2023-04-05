@@ -1,4 +1,4 @@
-FROM golang:1.18.4-alpine3.16
+FROM golang:alpine
 
 RUN apk add bash make wget git
 RUN mkdir /app
