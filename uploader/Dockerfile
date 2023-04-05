@@ -1,5 +1,5 @@
 # Image to run
-FROM golang:1.18.4-alpine3.16
+FROM golang:alpine
 
 COPY --from=csaf_base:latest /app/csaf_distribution/bin-linux-amd64/csaf_uploader /usr/local/csaf_uploader
 COPY --from=csaf_base:latest /version /version
