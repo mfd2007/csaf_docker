@@ -1,0 +1,15 @@
+version: '3'
+services:
+ 
+  csaf-provider:
+    image: csaf_provider:latest
+    hostname: acme.test
+    domainname: acme.test
+    environment:
+      - HOSTNAMES=acme.test
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - ./acme/config:/config
+      - ./acme/data:/data
