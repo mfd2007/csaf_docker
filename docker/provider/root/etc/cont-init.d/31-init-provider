@@ -1,0 +1,19 @@
+#!/usr/bin/with-contenv bash
+
+if [ ! -d "/data/html" ]; then
+  mkdir -p /data/html
+fi
+
+if [ ! -d "/data/archive" ]; then
+  mkdir -p /data/archive
+fi
+
+if [ ! -f "/config/csaf/private.asc" ]; then
+	PROVIDER_NAME=$(cat /config/csaf/config.toml | grep  '^name\s*=' | sed -E 's/name.*=.*"(.*)"/\1/')
+	FOLDER_GPG="/config/csaf/gpg"
+	mkdir -p $FOLDER_GPG
+
+	gpg --homedir "$FOLDER_GPG" --batch --passphrase '' --quick-gen-key "$PROVIDER_NAME" default default
+	gpg --homedir "$FOLDER_GPG" --output "/config/csaf/public.asc" --armor --export $PROVIDER_NAME
+	gpg --homedir "$FOLDER_GPG" --output "/config/csaf/private.asc" --armor --export-secret-key $PROVIDER_NAME
+fi

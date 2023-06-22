@@ -6,7 +6,7 @@ COPY --from=csaf_base:latest /version /version
  
 ENV PATH="/usr/local/go/bin:${PATH}"
 
-RUN apk add --no-cache spawn-fcgi fcgiwrap
+RUN apk add --no-cache spawn-fcgi fcgiwrap gpg gpg-agent
 COPY root/ /
 
 EXPOSE 80 443
