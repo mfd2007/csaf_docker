@@ -1,4 +1,6 @@
-FROM golang:1.19-alpine
+FROM golang:1.20-alpine
+
+ARG TAG
 
 RUN apk add bash make wget git
 RUN mkdir /app
