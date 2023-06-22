@@ -3,13 +3,23 @@ services:
  
   csaf-provider:
     image: csaf_provider:latest
-    hostname: acme.test
-    domainname: acme.test
+    hostname: csaf-provider
+    domainname: csaf-provider
     environment:
-      - HOSTNAMES=acme.test
+      - HOSTNAMES=csaf-provider
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Berlin
     volumes:
-      - ./acme/config:/config
-      - ./acme/data:/data
+      - ./config:/config
+      - ./data:/data
+
+  init-provider:
+    image: csaf_uploader:latest
+    profiles: [ "run_manually" ]
+    depends_on:
+      - csaf-provider
+    environment:
+      OPTIONS: "--config=/data/config-create.ini"
+    volumes:
+      - ./uploader:/data
