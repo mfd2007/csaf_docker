@@ -1,29 +1,27 @@
 #!/bin/bash
 
-cd base
+FOLDER=$(pwd)
+
+cd $FOLDER/docker/base
 if [[ $# -eq 0 ]]; then
 	./build.sh
 else
 	./build.sh $1
 fi
-cd ..
 
-cd aggregator
+cd $FOLDER/docker/aggregator
 ./build.sh
-cd ..
 
-cd checker
+cd $FOLDER/docker/checker
 ./build.sh
-cd ..
 
-cd provider
+cd $FOLDER/docker/provider
 ./build.sh
-cd ..
 
-cd uploader
+cd $FOLDER/docker/uploader
 ./build.sh
-cd ..
 
-cd downloader
+cd $FOLDER/docker/downloader
 ./build.sh
-cd ..
+
+cd $FOLDER
