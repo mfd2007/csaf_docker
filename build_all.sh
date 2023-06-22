@@ -1,7 +1,11 @@
 #!/bin/bash
 
 cd base
-./build.sh
+if [[ $# -eq 0 ]]; then
+	./build.sh
+else
+	./build.sh $1
+fi
 cd ..
 
 cd aggregator
