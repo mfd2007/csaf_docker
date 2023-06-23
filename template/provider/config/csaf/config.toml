@@ -29,7 +29,7 @@ web="/data/html"
 # If not set, the provider will read from the $SERVER_NAME variable.
 # The following shows an example of a manually set prefix:
 #canonical_url_prefix  = https://localhost
-canonical_url_prefix = "https://acme.test"
+canonical_url_prefix = "https://csaf-provider"
 
 # Require users to use a password and a valid Client Certificate for write access.
 #certificate_and_password = false
