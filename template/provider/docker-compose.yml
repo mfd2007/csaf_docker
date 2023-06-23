@@ -54,5 +54,19 @@ services:
     networks:
       csaf-network: {}
 
+  checker:
+    image: csaf_checker:latest
+    profiles: [ "run_manually" ]
+    depends_on:
+      - csaf-provider
+    environment:
+      OPTIONS: "${CHECKER_PARAM}"
+    volumes:
+      - ./checker/data:/data
+      - ./checker/config:/config
+    networks:
+      csaf-network: {}
+      
+
 networks:
   csaf-network: {}
