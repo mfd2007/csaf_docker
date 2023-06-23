@@ -1,6 +1,7 @@
 # Image to run
 FROM golang:1.20-alpine
 
+RUN apk add --no-cache gpg gpg-agent
 COPY --from=csaf_base:latest /app/csaf_distribution/bin-linux-amd64/csaf_aggregator /usr/local/csaf_aggregator
 COPY --from=csaf_base:latest /version /version
 

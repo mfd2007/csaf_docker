@@ -40,5 +40,19 @@ services:
     networks:
       csaf-network: {}
 
+  aggregator:
+    image: csaf_aggregator:latest
+    profiles: [ "run_manually" ]
+    depends_on:
+      - csaf-provider
+    environment:
+      DELAY: "1"
+      INTERIM: "${INTERIM}"
+    volumes:
+      - ./aggregator/data:/data
+      - ./aggregator/config:/config
+    networks:
+      csaf-network: {}
+
 networks:
   csaf-network: {}
