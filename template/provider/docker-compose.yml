@@ -13,7 +13,9 @@ services:
     volumes:
       - ./config:/config
       - ./data:/data
-
+    networks:
+      csaf-network: {}
+      
   init-provider:
     image: csaf_uploader:latest
     profiles: [ "run_manually" ]
@@ -23,3 +25,20 @@ services:
       OPTIONS: "--config=/data/config-create.ini"
     volumes:
       - ./uploader:/data
+    networks:
+      csaf-network: {}
+
+  upload-provider:
+    image: csaf_uploader:latest
+    profiles: [ "run_manually" ]
+    depends_on:
+      - csaf-provider
+    environment:
+      OPTIONS: "--config=/data/config-upload.ini ${FILE}"
+    volumes:
+      - ./uploader:/data
+    networks:
+      csaf-network: {}
+
+networks:
+  csaf-network: {}
