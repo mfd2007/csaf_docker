@@ -66,6 +66,17 @@ services:
     networks:
       csaf-network: {}
       
-
+  downloader:
+    image: csaf_downloader:latest
+    profiles: [ "run_manually" ]
+    depends_on:
+      - csaf-provider
+    environment:
+      OPTIONS: "${DOWNLOADER_DOMAIN}"
+    volumes:
+      - ./downloader/data:/data
+    networks:
+      csaf-network: {}
+      
 networks:
   csaf-network: {}
